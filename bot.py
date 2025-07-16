@@ -9,9 +9,14 @@ app = App(
     signing_secret=os.environ.get("SLACK_SIGNING_SECRET")
 )
 
-IS_TEST = True
-REFERRAL_CHANNEL_ID = "C0855QUNLUT" if not IS_TEST else "C095PR2DE0P"
-PRAISE_CHANNEL_ID = "C08753FBB0F" if not IS_TEST else "C0965SZNRPW"
+IS_TEST = True#Trueの場合テスト用チャンネルに
+if IS_TEST:
+    REFERRAL_CHANNEL_ID = "C095PR2DE0P"  # テスト用
+    PRAISE_CHANNEL_ID = "C0965SZNRPW"    # テスト用
+else:
+    REFERRAL_CHANNEL_ID = "C0855QUNLUT"  # 本番用
+    PRAISE_CHANNEL_ID = "C08753FBB0F"    # 本番用
+
 
 
 @app.event("reaction_added")
@@ -26,7 +31,7 @@ def handle_reaction(event, client):
         return
 
     # 条件2：リアクションが「獲得2」
-    if reaction != "獲得2":
+    if reaction != ":獲得2:":
         return
 
     try:
