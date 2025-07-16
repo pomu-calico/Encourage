@@ -31,7 +31,7 @@ def handle_reaction(event, client):
         return
 
     # 条件2：リアクションが「獲得2」
-    if reaction != ":獲得2:":
+    if reaction != "獲得2":
         return
 
     try:
@@ -89,14 +89,15 @@ def handle_reaction(event, client):
 ]
 
 
-        praise_message = random.choice(praise_templates).format(name=real_name, text=text)
+        praise_message = random.choice(praise_templates).format(mentioned_user_id=mentioned_user_id,quoted_text=quoted_text)
 
 
         client.chat_postMessage(
             channel=PRAISE_CHANNEL_ID,
             text=praise_message
         )
-
+        print(f"称賛メッセージを送信しました: {praise_message}")
+        
     except SlackApiError as e:
         print(f"Slack API エラー: {e.response['error']}")
         print("エラー詳細:", e.response["error"])
@@ -105,4 +106,4 @@ def handle_reaction(event, client):
             print("Slack API エラー:", e)
 
 if __name__ == "__main__":
-    app.start(port=3000)
+    app.start(port=int(os.environ.get("PORT", 3000)))
