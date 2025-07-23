@@ -30,8 +30,8 @@ def handle_reaction(event, client):
     if channel_id != REFERRAL_CHANNEL_ID:
         return
 
-    # 条件2：リアクションが「獲得2」
-    if reaction != "獲得1"or"獲得2"or"獲得最高"or"獲得キター":
+    # 条件2：リアクションが「獲得」
+    if reaction not in ["獲得1", "獲得2", "獲得最高", "獲得キター"]:
         return
 
     try:
