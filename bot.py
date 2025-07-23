@@ -17,7 +17,7 @@ else:
     REFERRAL_CHANNEL_ID = "C0855QUNLUT"  # 本番用
     PRAISE_CHANNEL_ID = "C08753FBB0F"    # 本番用
 
-
+ua_member_id =["U080YB72HJ9","U085FSU62CQ","U08HP59DVHA","U08UY4U3WC8","U090PFFT2MS"]#金井茉央,半田凌也,佐藤宏紀,板井一希,橋本歩武
 
 @app.event("reaction_added")
 def handle_reaction(event, client):
@@ -31,7 +31,7 @@ def handle_reaction(event, client):
         return
 
     # 条件2：リアクションが「獲得2」
-    if reaction != "獲得2":
+    if reaction != "獲得1"or"獲得2"or"獲得最高"or"獲得キター":
         return
 
     try:
@@ -67,30 +67,39 @@ def handle_reaction(event, client):
 
         # 称賛メッセージを生成して送信
         praise_templates = [
-    "🎉 <@{mentioned_user_id}> が獲得！みんな称賛の時間だああああああ！！！！\n> {quoted_text}",
-    "🎉 <@{mentioned_user_id}> が獲得！頑張った人は褒められるべきだよね！？返信でガンガン讃えようぜ！\n> {quoted_text}",
-    "👏 獲得情報！<@{mentioned_user_id}> の努力に拍手！\n> {quoted_text}",
-    "🌟 <@{mentioned_user_id}> やるじゃん！獲得おめでとう！\n> {quoted_text}",
-    "🔥 <@{mentioned_user_id}> がやったぜ！みんなで盛り上がろう！\n> {quoted_text}",
-    "💪 獲得情報！<@{mentioned_user_id}> の活躍ヤバい！称賛の嵐だ！\n> {quoted_text}",
-    "🥳 <@{mentioned_user_id}> 獲得おめでとう！最高のメンターだ！\n> {quoted_text}",
-    "✨ <@{mentioned_user_id}> の努力が光ってる！みんな拍手！\n> {quoted_text}",
-    "🎊 やったね！<@{mentioned_user_id}> の偉業に乾杯！\n> {quoted_text}",
-    "🌈 <@{mentioned_user_id}> が輝いてる！称賛メッセージ送ろうぜ！\n> {quoted_text}",
-    "💥 <@{mentioned_user_id}> がリファ獲得！みんなで歓声あげよう！\n> {quoted_text}",
-    "👏🏻 <@{mentioned_user_id}> がリファ獲得！マジで尊敬！\n> {quoted_text}",
-    "🎖️ <@{mentioned_user_id}> の活躍は頼もしい！見習おう！\n> {quoted_text}",
-    "🌟 <@{mentioned_user_id}> の獲得、みんなで称えよう！\n> {quoted_text}",
-    "🎉 <@{mentioned_user_id}> ナイスリファ！これからも期待してるぜ！\n> {quoted_text}",
-    "💫 <@{mentioned_user_id}> が獲得！最高のパフォーマンスを見せたあああああああ！\n> {quoted_text}",
-    "🙌 <@{mentioned_user_id}> 獲得ほんとにお疲れ！みんな拍手！\n> {quoted_text}",
-    "👏 <@{mentioned_user_id}> の努力に乾杯！一緒にがんばろうぜ！\n> {quoted_text}",
-    "🎈 <@{mentioned_user_id}> 今日のヒーローだ！みんなで称えて盛り上がろうぜ！\n> {quoted_text}",
+    "🎉 <@{mentioned_user_id}> が獲得！みんな称賛の時間だああああああ！！！！\n",
+    "🎉 <@{mentioned_user_id}> が獲得！頑張った人は褒められるべきだよね！？返信でガンガン讃えようぜ！\n",
+    "👏 獲得情報！<@{mentioned_user_id}> の努力に拍手！\n",
+    "🌟 <@{mentioned_user_id}> やるじゃん！獲得おめでとう！\n",
+    "🔥 <@{mentioned_user_id}> がやったぜ！みんなで盛り上がろう！\n",
+    "💪 獲得情報！<@{mentioned_user_id}> の活躍ヤバい！称賛の嵐だ！\n",
+    "🥳 <@{mentioned_user_id}> 獲得おめでとう！最高のメンターだ！\n",
+    "✨ <@{mentioned_user_id}> の努力が光ってる！みんな拍手！\n ",
+    "🎊 やったね！<@{mentioned_user_id}> の偉業に乾杯！\n",
+    "🌈 <@{mentioned_user_id}> が輝いてる！称賛メッセージ送ろうぜ！\n",
+    "💥 <@{mentioned_user_id}> がリファ獲得！みんなで歓声あげよう！\n",
+    "👏🏻 <@{mentioned_user_id}> がリファ獲得！マジで尊敬！\n",
+    "🎖️ <@{mentioned_user_id}> の活躍は頼もしい！見習おう！\n",
+    "🌟 <@{mentioned_user_id}> の獲得、みんなで称えよう！\n>",
+    "🎉 <@{mentioned_user_id}> ナイスリファ！これからも期待してるぜ！\n>",
+    "💫 <@{mentioned_user_id}> が獲得！最高のパフォーマンスを見せたあああああああ！\n",
+    "🙌 <@{mentioned_user_id}> 獲得ほんとにお疲れ！みんな拍手！\n",
+    "👏 <@{mentioned_user_id}> の努力に乾杯！一緒にがんばろうぜ！\n",
+    "🎈 <@{mentioned_user_id}> 今日のヒーローだ！みんなで称えて盛り上がろうぜ！\n"
 ]
 
+        # テンプレートを選び、メンション部分を埋め込む
+        praise_user_id = random.choice(ua_member_id)
+        praise_template = random.choice(praise_templates)
+        formatted_template = praise_template.format(mentioned_user_id=mentioned_user_id)
 
-        praise_message = random.choice(praise_templates).format(mentioned_user_id=mentioned_user_id,quoted_text=quoted_text)
-
+        # 称賛メッセージを組み立て
+        praise_message = (
+            "リファ相談チャンネルに称賛スタンプが押されました！\n"
+            f"~~称賛担当者~~\n<@{praise_user_id}>\n"
+            f"~~称賛例~~\n{formatted_template}"
+            f"~~スタンプが押された投稿~~\n{quoted_text}"
+        )
 
         client.chat_postMessage(
             channel=PRAISE_CHANNEL_ID,
