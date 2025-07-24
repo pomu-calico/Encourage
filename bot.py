@@ -9,13 +9,13 @@ app = App(
     signing_secret=os.environ.get("SLACK_SIGNING_SECRET")
 )
 
-IS_TEST = True#Trueの場合テスト用チャンネルに
+IS_TEST = False#Trueの場合テスト用チャンネルに
 if IS_TEST:
     REFERRAL_CHANNEL_ID = "C095PR2DE0P"  # テスト用
     PRAISE_CHANNEL_ID = "C0965SZNRPW"    # テスト用
 else:
     REFERRAL_CHANNEL_ID = "C0855QUNLUT"  # 本番用
-    PRAISE_CHANNEL_ID = "C08753FBB0F"    # 本番用
+    PRAISE_CHANNEL_ID = "C0979LVFSE8"    # 本番用
 
 ua_member_id =["U080YB72HJ9","U085FSU62CQ","U08HP59DVHA","U08UY4U3WC8","U090PFFT2MS"]#金井茉央,半田凌也,佐藤宏紀,板井一希,橋本歩武
 
