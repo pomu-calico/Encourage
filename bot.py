@@ -9,7 +9,7 @@ app = App(
     signing_secret=os.environ.get("SLACK_SIGNING_SECRET")
 )
 
-IS_TEST = False#Trueの場合テスト用チャンネルに
+IS_TEST = True#Trueの場合テスト用チャンネルに
 if IS_TEST:
     REFERRAL_CHANNEL_ID = "C095PR2DE0P"  # テスト用
     PRAISE_CHANNEL_ID = "C0965SZNRPW"    # テスト用
@@ -80,8 +80,8 @@ def handle_reaction(event, client):
     "💥 <@{mentioned_user_id}> がリファ獲得！みんなで歓声あげよう！\n",
     "👏🏻 <@{mentioned_user_id}> がリファ獲得！マジで尊敬！\n",
     "🎖️ <@{mentioned_user_id}> の活躍は頼もしい！見習おう！\n",
-    "🌟 <@{mentioned_user_id}> の獲得、みんなで称えよう！\n>",
-    "🎉 <@{mentioned_user_id}> ナイスリファ！これからも期待してるぜ！\n>",
+    "🌟 <@{mentioned_user_id}> の獲得、みんなで称えよう！\n",
+    "🎉 <@{mentioned_user_id}> ナイスリファ！これからも期待してるぜ！\n",
     "💫 <@{mentioned_user_id}> が獲得！最高のパフォーマンスを見せたあああああああ！\n",
     "🙌 <@{mentioned_user_id}> 獲得ほんとにお疲れ！みんな拍手！\n",
     "👏 <@{mentioned_user_id}> の努力に乾杯！一緒にがんばろうぜ！\n",
