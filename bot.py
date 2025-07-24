@@ -31,7 +31,7 @@ def handle_reaction(event, client):
         return
 
     # 条件2：リアクションが「獲得」
-    if reaction not in ["獲得1", "獲得2", "獲得最高", "獲得キター"]:
+    if reaction not in ["獲得", "獲得2", "獲得最高", "獲得キター"]:
         return
 
     try:
