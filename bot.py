@@ -17,7 +17,7 @@ else:
     REFERRAL_CHANNEL_ID = "C0855QUNLUT"  # 本番用
     PRAISE_CHANNEL_ID = "C0979LVFSE8"    # 本番用
 
-ua_member_id =["U080YB72HJ9","U085FSU62CQ","U08HP59DVHA","U08UY4U3WC8","U090PFFT2MS"]#金井茉央,半田凌也,佐藤宏紀,板井一希,橋本歩武
+ua_member_id =["U080YB72HJ9","U08HP59DVHA","U08UY4U3WC8","U090PFFT2MS"]#金井茉央,半田凌也"U085FSU62CQ",佐藤宏紀,板井一希,橋本歩武
 
 @app.event("reaction_added")
 def handle_reaction(event, client):
@@ -89,7 +89,15 @@ def handle_reaction(event, client):
 ]
 
         # テンプレートを選び、メンション部分を埋め込む
-        praise_user_id = random.choice(ua_member_id)
+        # 獲得者以外から称賛担当者を選ぶ
+        eligible_praise_ids = [uid for uid in ua_member_id if uid != mentioned_user_id]
+
+        # 万が一全員が対象外になった場合（＝候補0件）を考慮
+        if not eligible_praise_ids:
+            print("称賛担当者の候補がいません")
+            return
+
+        praise_user_id = random.choice(eligible_praise_ids)
         praise_template = random.choice(praise_templates)
         formatted_template = praise_template.format(mentioned_user_id=mentioned_user_id)
 
