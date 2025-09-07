@@ -88,5 +88,5 @@ def register_countdown_handlers(app: App):
 
     # --- スケジューラ設定 ---
     scheduler = BackgroundScheduler(timezone="Asia/Tokyo")
-    scheduler.add_job(send_countdowns, "cron", hour=8, minute=00)  # 毎日8時
+    scheduler.add_job(send_countdowns, "cron", hour=4, minute=10)  # 毎日8時
     scheduler.start()
