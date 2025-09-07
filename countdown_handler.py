@@ -77,7 +77,7 @@ def register_countdown_handlers(app: App):
             target_date = datetime.datetime.strptime(event["date"], "%Y-%m-%d").date()
             days_left = (target_date - today).days
             if days_left >= 0:
-                message = f"@channel ⏳ {event['event_name']} まであと {days_left}日！"
+                message = f"<!channel> ⏳ {event['event_name']} まであと {days_left}日！"
                 try:
                     app.client.chat_postMessage(
                         channel=event["channel"],
