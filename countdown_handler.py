@@ -77,7 +77,7 @@ def register_countdown_handlers(app: App):
             target_date = datetime.datetime.strptime(event["date"], "%Y-%m-%d").date()
             days_left = (target_date - today).days
             if days_left >= 0:
-                message = f"⏳ {event['event_name']} まであと {days_left}日！"
+                message = f"@channel ⏳ {event['event_name']} まであと {days_left}日！"
                 try:
                     app.client.chat_postMessage(
                         channel=event["channel"],
@@ -88,5 +88,5 @@ def register_countdown_handlers(app: App):
 
     # --- スケジューラ設定 ---
     scheduler = BackgroundScheduler(timezone="Asia/Tokyo")
-    scheduler.add_job(send_countdowns, "cron", hour=3, minute=30)  # 毎日8時
+    scheduler.add_job(send_countdowns, "cron", hour=3, minute=35)  # 毎日8時
     scheduler.start()
