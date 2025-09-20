@@ -5,7 +5,7 @@ from slack_bolt import App
 from slack_bolt.adapter.flask import SlackRequestHandler
 
 from praise_handler import register_praise_handlers
-from countdown_handler import register_countdown_handlers, send_countdowns
+from countdown_handler import register_countdown_handlers
 
 # -------------------------
 # Slack App 初期化
