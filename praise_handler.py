@@ -8,7 +8,7 @@ app = App(
     token=os.environ.get("SLACK_BOT_TOKEN"),
     signing_secret=os.environ.get("SLACK_SIGNING_SECRET")
 )
-ua_member_id =["U080YB72HJ9","U08HP59DVHA","U08UY4U3WC8","U090PFFT2MS","U07VASA5PN1"]#金井茉央,佐藤宏紀,板井一希,橋本歩武,藤元涼香
+ua_member_id =["U080YB72HJ9","U08HP59DVHA","U08UY4U3WC8","U090PFFT2MS","U07VASA5PN1","U09E90Z9Q73"]#金井茉央,佐藤宏紀,板井一希,橋本歩武,藤元涼香,成島寛惠
 
 def register_praise_handlers(app, REFERRAL_CHANNEL_ID, PRAISE_CHANNEL_ID):
     @app.event("reaction_added")
