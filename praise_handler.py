@@ -15,8 +15,9 @@ def register_praise_handlers(app, REFERRAL_CHANNEL_ID, PRAISE_CHANNEL_ID):
     def handle_reaction(event, client, headers, logger): # headersを追加
     # Slackからの再試行（Retry）であれば無視する
     # headersは辞書形式なので、キーが存在するか確認
-        if headers.get("x-slack-retry-num"):
-            print(f"再試行リクエスト（{headers.get('x-slack-retry-num')}回目）のためスキップします")
+        if headers and (headers.get("x-slack-retry-num") or headers.get("X-Slack-Retry-Num")):
+            retry_count = headers.get("x-slack-retry-num") or headers.get("X-Slack-Retry-Num")
+            print(f"再試行リクエスト（{retry_count}回目）のためスキップします")
             return
         
         reaction = event['reaction']
