@@ -12,7 +12,12 @@ ua_member_id =["U080YB72HJ9","U08HP59DVHA","U08UY4U3WC8","U090PFFT2MS","U07VASA5
 
 def register_praise_handlers(app, REFERRAL_CHANNEL_ID, PRAISE_CHANNEL_ID):
     @app.event("reaction_added")
-    def handle_reaction(event, client):
+    def handle_reaction(event, client, headers):
+        # Slackからの再試行（Retry）であれば無視する
+        if "x-slack-retry-num" in headers:
+            print("再試行リクエストのためスキップします")
+            return
+        
         reaction = event['reaction']
         channel_id = event['item']['channel']
         ts = event['item']['ts']
