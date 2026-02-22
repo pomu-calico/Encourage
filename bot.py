@@ -21,7 +21,7 @@ if IS_TEST:
     PRAISE_CHANNEL_ID = "C0965SZNRPW"    # テスト用
 else:
     REFERRAL_CHANNEL_ID = "C0855QUNLUT"  # 本番用
-    PRAISE_CHANNEL_ID = "C0979LVFSE8"    # 本番用
+    PRAISE_CHANNEL_ID = "C0965SZNRPW"    # 本番用"C0979LVFSE8" 
 
 # 称賛機能を登録
 register_praise_handlers(app, REFERRAL_CHANNEL_ID, PRAISE_CHANNEL_ID)
